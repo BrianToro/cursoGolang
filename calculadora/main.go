@@ -10,6 +10,7 @@ import (
 
 func main(){
 	scanner := bufio.NewScanner(os.Stdin)
+	fmt.Println("Inserte la operacion (numero operador numero) Ejem: 2 + 2")
 	scanner.Scan()
 	operacion := scanner.Text()
 	valores := separar(operacion)
