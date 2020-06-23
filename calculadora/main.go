@@ -9,10 +9,7 @@ import (
 )
 
 func main(){
-	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Println("Inserte la operacion (numero operador numero) Ejem: 2 + 2")
-	scanner.Scan()
-	operacion := scanner.Text()
+	operacion := leerEntrada()
 	valores := separar(operacion)
 	operador1, err1 := strconv.Atoi(valores[0])
 	operador2, err2 := strconv.Atoi(valores[2])
@@ -52,4 +49,10 @@ func definirOperacion(num1 int, num2 int, operador string)(int){
 func separar(cadena string)([]string){
 	valores :=  strings.Split(cadena, " ")
 	return valores
+}
+
+func leerEntrada() string{
+	scanner := bufio.NewScanner(os.Stdin)
+	scanner.Scan()
+	return scanner.Text()
 }
