@@ -14,10 +14,18 @@ func main(){
 	scanner.Scan()
 	operacion := scanner.Text()
 	valores := separar(operacion)
-	operador1, _ := strconv.Atoi(valores[0])
-	operador2, _ := strconv.Atoi(valores[2])
-	resultado := definirOperacion(operador1, operador2, valores[1])
-	fmt.Println(resultado)
+	operador1, err1 := strconv.Atoi(valores[0])
+	operador2, err2 := strconv.Atoi(valores[2])
+	if err1 != nil || err2 != nil {
+		controlDeErrores()
+	} else {
+		resultado := definirOperacion(operador1, operador2, valores[1])
+		fmt.Println(resultado)
+	}
+}
+
+func controlDeErrores(){
+	fmt.Println("Operacion invalida")
 }
 
 func definirOperacion(num1 int, num2 int, operador string)(int){
