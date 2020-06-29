@@ -74,14 +74,29 @@ func main() {
 		complete:    false,
 	}
 
+	t4 := &task{
+		name:        "Terminar curso de Java",
+		description: "Completar mi curso de java en platzi.com",
+		complete:    false,
+	}
+
 	listOfTask := &taskList{
 		tasks: []*task{
 			t1, t2,
 		},
 	}
 
-	listOfTask.addTask(t3)
-	t3.completeTask()
-	fmt.Println(len(listOfTask.tasks))
-	listOfTask.printTaskUncompleted()
+	listOfTask2 := &taskList{tasks: []*task{
+		t3, t4,
+	}}
+
+	mapOfTasks := make(map[string]*taskList)
+
+	mapOfTasks["Brian"] = listOfTask
+	mapOfTasks["Pedrin"] = listOfTask2
+
+	fmt.Println("Task of Brian: ")
+	mapOfTasks["Brian"].printListOFTasks()
+	fmt.Println("Task of Pedrin: ")
+	mapOfTasks["Pedrin"].printListOFTasks()
 }
